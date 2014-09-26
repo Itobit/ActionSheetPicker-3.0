@@ -113,14 +113,11 @@ CG_INLINE BOOL isIPhone4()
         else
             NSAssert(NO, @"Invalid origin provided to ActionSheetPicker ( %@ )", origin);
 
-        UIBarButtonItem *sysDoneButton = [self createButtonWithType:UIBarButtonSystemItemDone target:self
-                                                             action:@selector(actionPickerDone:)];
-
-        UIBarButtonItem *sysCancelButton = [self createButtonWithType:UIBarButtonSystemItemCancel target:self
-                                                               action:@selector(actionPickerCancel:)];
-
-        [self setCancelBarButtonItem:sysCancelButton];
-        [self setDoneBarButtonItem:sysDoneButton];
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(actionPickerDone:)];
+        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(actionPickerCancel:)];
+        
+        [self setCancelBarButtonItem:cancelButton];
+        [self setDoneBarButtonItem:doneButton];
 
         //allows us to use this without needing to store a reference in calling class
         self.selfReference = self;
